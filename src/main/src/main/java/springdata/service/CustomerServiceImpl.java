@@ -1,15 +1,14 @@
 package springdata.service;
 
 import entities.Customer;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.stereotype.Service;
 import springdata.config.DataConfig;
 import springdata.exceptions.DeleteException;
-import springdata.exceptions.FindByIdException;
 import springdata.repository.CustomerRepo;
 
 import java.math.BigDecimal;
@@ -31,7 +30,7 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public Set<Customer> findByCreditLimitBetween(int minLimit, int maxLimit) {
+    public Set<Customer> findByCreditLimitBetween(BigDecimal minLimit, BigDecimal maxLimit) {
         LOG.debug("finding customers by credit limit between");
         HashSet<Customer> customers = new HashSet<>(custRepository.findByCreditLimitBetween(minLimit, maxLimit));
         LOG.debug("finding customers by credit limit between complete");
@@ -46,7 +45,6 @@ public class CustomerServiceImpl implements CustomerService {
             cust = custRepository.findById(id).orElseThrow(ChangeSetPersister.NotFoundException::new);
         } catch (ChangeSetPersister.NotFoundException e) {
             LOG.warn("cannot findCustomer with id{"+ id +"}, because dont present");
-            throw new FindByIdException("Cannot find Customer by Id=" + id + ", because it dont present");
         }
         LOG.debug("findCustomerById complete");
         return cust;

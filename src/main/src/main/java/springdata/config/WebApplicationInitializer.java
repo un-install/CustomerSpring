@@ -13,7 +13,7 @@ public class WebApplicationInitializer extends AbstractAnnotationConfigDispatche
     @Override
     protected Class<?>[] getServletConfigClasses() {
         //return null;
-        return new Class[] { MainMvcConfig.class };
+       return new Class[] { MainMvcConfig.class };
     }
 
     @Override
