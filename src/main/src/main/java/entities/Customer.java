@@ -1,5 +1,7 @@
 package entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -11,8 +13,10 @@ import java.util.Set;
 public class Customer implements Serializable, ModelInterface {
     private BigDecimal custNum;
     private String company;
+    @JsonIgnore
     private Salesrep custRep;
     private BigDecimal creditLimit;
+    @JsonIgnore
     private Set<Order> orders = new HashSet<>();
 
     public Customer() {
@@ -23,7 +27,6 @@ public class Customer implements Serializable, ModelInterface {
         this.company = company;
         this.custRep = custRep;
         this.creditLimit = creditLimit;
-        this.orders = orders;
     }
 
     @Id
@@ -87,12 +90,11 @@ public class Customer implements Serializable, ModelInterface {
 
     @Override
     public String toString() {
-        return "\nCustomer{" +
-                " custNum=" + custNum +
-                " company='" + company + '\'' +
-                " custRep=" + custRep.getEmplNum() +
-                " creditLimit=" + creditLimit +
-                " orders=" + orders +
-                "}";
+        final StringBuilder sb = new StringBuilder("Customer{");
+        sb.append("custNum=").append(custNum);
+        sb.append(", company='").append(company).append('\'');
+        sb.append(", creditLimit=").append(creditLimit);
+        sb.append('}');
+        return sb.toString();
     }
 }

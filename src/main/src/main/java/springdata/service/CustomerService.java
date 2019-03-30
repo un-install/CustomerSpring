@@ -8,7 +8,7 @@ import java.util.Set;
 public interface CustomerService {
     Set<Customer> getAllCustomers();
 
-    Set<Customer> findByCreditLimitBetween(int minLimit, int maxLimit);
+    Set<Customer> findByCreditLimitBetween(BigDecimal minLimit, BigDecimal maxLimit);
 
     Customer findCustomerById(BigDecimal id);
 

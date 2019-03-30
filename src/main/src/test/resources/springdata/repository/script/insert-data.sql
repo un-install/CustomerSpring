@@ -1,0 +1,4 @@
+Insert into MA_STUDENT.CUSTOMERS (CUST_NUM,COMPANY,CREDIT_LIMIT) values ('111112','Garyachie golovi','31999');
+Insert into MA_STUDENT.CUSTOMERS (CUST_NUM,COMPANY,CREDIT_LIMIT) values ('111113','Garyachie golovi','311');
+Insert into MA_STUDENT.CUSTOMERS (CUST_NUM,COMPANY,CREDIT_LIMIT) values ('111114','Garyachie golovi','3112');
+Insert into MA_STUDENT.CUSTOMERS (CUST_NUM,COMPANY,CREDIT_LIMIT) values ('111115','Garyachie golovi','3155');
