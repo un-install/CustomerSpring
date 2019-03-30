@@ -1,0 +1,187 @@
+{
+	"info": {
+		"_postman_id": "0913a23b-05ec-41fa-b384-07c59588c4ac",
+		"name": "springproj-http",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "getAllCustomers",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:1144/main-1.0-SNAPSHOT/customer/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1144",
+					"path": [
+						"main-1.0-SNAPSHOT",
+						"customer",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getCustomerById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:1144/main-1.0-SNAPSHOT/customer/2102",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1144",
+					"path": [
+						"main-1.0-SNAPSHOT",
+						"customer",
+						"2102"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "findByCreditLimitBetween",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:1144/main-1.0-SNAPSHOT/customer/100/2000",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1144",
+					"path": [
+						"main-1.0-SNAPSHOT",
+						"customer",
+						"100",
+						"2000"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updateCustomer",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "test",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "test",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"creditLimit\": 120,\r\n  \"custNum\": 210,\r\n  \"custRep\": 102,\r\n  \"customerDetails\": {\r\n    \"company\": \"string\"\r\n  }\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:1144/main-1.0-SNAPSHOT/customer/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1144",
+					"path": [
+						"main-1.0-SNAPSHOT",
+						"customer",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteCustomer",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "test",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "test",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:1144/main-1.0-SNAPSHOT/customer/2102",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1144",
+					"path": [
+						"main-1.0-SNAPSHOT",
+						"customer",
+						"2102"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "insertCustomer",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		}
+	]
+}
