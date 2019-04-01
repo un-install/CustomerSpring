@@ -37,7 +37,7 @@ import org.springframework.web.context.WebApplicationContext;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import springdata.DTO.CustomerRequest;
 import springdata.config.MainMvcConfig;
-import springdata.entity.Customer;
+
 import springdata.utils.DtoModelsUtils;
 
 import java.math.BigDecimal;
@@ -81,9 +81,10 @@ public class CustomerControllerSecurityTest {
     @WithMockUser(roles = "ADMIN")
     public void testUpdateCustomerExistAuth() throws Exception {
         CustomerRequest req = DtoModelsUtils.customerRequest();
+        req.setCustNum(new BigDecimal(111112));
         req.setCustRep(new BigDecimal(101));
         req.setCreditLimit(new BigDecimal(900));
-        MvcResult mvcResult = mockMvc.perform(put("/customer/").contentType(MediaType.APPLICATION_JSON).content(gson.toJson(req))).andReturn();
+        MvcResult mvcResult = mockMvc.perform(put("/customer/").contentType(MediaType.APPLICATION_JSON).content(gson.toJson(req))).andDo(print()).andReturn();
 
         assertEquals(Response.Status.OK.getStatusCode(), mvcResult.getResponse().getStatus());
     }
@@ -91,7 +92,7 @@ public class CustomerControllerSecurityTest {
     @Test
     @WithMockUser(roles = "ADMIN")
     public void testDeleteCustomerExistAuth() throws Exception {
-        MvcResult mvcResult = mockMvc.perform(delete("/customer/{id}", 88888)).andReturn();
+        MvcResult mvcResult = mockMvc.perform(delete("/customer/{id}", 111112)).andReturn();
         assertEquals(Response.Status.OK.getStatusCode(), mvcResult.getResponse().getStatus());
     }
 

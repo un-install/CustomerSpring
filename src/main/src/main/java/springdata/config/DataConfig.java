@@ -7,7 +7,6 @@ import org.apache.logging.log4j.Logger;
 import org.hibernate.jpa.HibernatePersistenceProvider;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cache.CacheManager;
-import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.cache.concurrent.ConcurrentMapCacheManager;
 import org.springframework.context.annotation.*;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
@@ -71,7 +70,7 @@ public class DataConfig {
         LocalContainerEntityManagerFactoryBean lfb = new LocalContainerEntityManagerFactoryBean();
         lfb.setPersistenceProviderClass(HibernatePersistenceProvider.class);
         lfb.setDataSource(dataSource());
-        lfb.setPackagesToScan("entities");
+        lfb.setPackagesToScan("springdata/entity");
         lfb.setJpaProperties(hibernateProps());
         return lfb;
     }

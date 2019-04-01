@@ -29,8 +29,8 @@
 		SMTPHost="smtp.gmail.com"
 			SMTPPort="465" 
 			SMTPUsername="illlyapolianskiy@gmail.com"
-			SMTPPassword=""
-			To="@illlyapolianskiygmail.com"
+			SMTPPassword="123qwa321123"
+			To="illlyapolianskiy@gmail.com"
 			from="illlyapolianskiy@gmail.com"
 			Subject="Customer project Error Log">
 		</SMTP>
