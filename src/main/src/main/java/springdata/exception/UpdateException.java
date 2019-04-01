@@ -1,4 +1,4 @@
-package springdata.exceptions;
+package springdata.exception;
 
 public class UpdateException extends RuntimeException {
 

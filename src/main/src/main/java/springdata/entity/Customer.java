@@ -1,4 +1,4 @@
-package entities;
+package springdata.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -6,6 +6,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 @Entity
@@ -39,7 +40,7 @@ public class Customer implements Serializable, ModelInterface {
         this.custNum = custNum;
     }
 
-    @OneToMany(mappedBy = "cust", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "cust", fetch = FetchType.LAZY)
     public Set<Order> getOrders() {
         return orders;
     }
@@ -57,7 +58,7 @@ public class Customer implements Serializable, ModelInterface {
         this.company = company;
     }
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "cust_rep")
     public Salesrep getCustRep() {
         return custRep;

@@ -1,16 +1,19 @@
-package springdata.controllers;
+package springdata.controller;
 
-import entities.Customer;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.Authorization;
+import springdata.DTO.CustomerRequest;
+import springdata.entity.Customer;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import springdata.exceptions.DeleteException;
-import springdata.exceptions.UpdateException;
+import springdata.exception.UpdateException;
+import springdata.service.CustomerCreator;
 import springdata.service.CustomerService;
 
+import javax.validation.Valid;
 import java.math.BigDecimal;
-import java.util.List;
 import java.util.Set;
 
 @RestController
@@ -20,6 +23,9 @@ public class CustomerController {
 
     @Autowired
     private CustomerService customerService;
+
+    @Autowired
+    private CustomerCreator customerCreator;
 
     @GetMapping("/")
     public @ResponseBody Set<Customer> getAllCustomers(){
@@ -45,20 +51,30 @@ public class CustomerController {
         return result;
     }
 
-    @PostMapping("/")
-    public void updateCustomer( @RequestBody Customer customer){
-        LOG.info("updateCustomer start, id={}", customer.getCustNum());
-        if (customerService.findCustomerById(customer.getCustNum()) == null) {
+    @PutMapping("/")
+    @ApiOperation(authorizations = {@Authorization(value = "basicAuth")}, value = "updateCustomer")
+    public void updateCustomer(@Valid @RequestBody CustomerRequest req){
+        LOG.info("updateCustomer start, id={}", req.getCustNum());
+        if (customerService.findCustomerById(req.getCustNum()) == null) {
             throw new UpdateException("Entity with this id do not Exist!");
         }
-        customerService.updateCustomer(customer);
+        customerService.updateCustomer(customerCreator.createCustomer(req));
         LOG.info("updateCustomer end");
     }
 
     @DeleteMapping("/{id}")
+    @ApiOperation(authorizations = {@Authorization(value = "basicAuth")}, value = "deleteCustomer")
     public void deleteCustomer(@PathVariable("id")int id){
         LOG.info("deleteCustomer start, id={}", id);
         customerService.deleteCustomer(new BigDecimal(id));
         LOG.info("deleteCustomer end");
+    }
+
+    @PostMapping("/")
+    @ApiOperation(authorizations = {@Authorization(value = "basicAuth")}, value = "insertCustomer")
+    public void insertCustomer (@Valid @RequestBody CustomerRequest req){
+        LOG.info("insertCustomer, customerReq={}", req);
+        customerService.insertCustomer(customerCreator.createCustomer(req));
+        LOG.info("insertCustomer end");
     }
 }

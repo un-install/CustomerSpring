@@ -1,4 +1,4 @@
-package entities;
+package springdata.entity;
 
 import javax.persistence.*;
 import java.io.Serializable;

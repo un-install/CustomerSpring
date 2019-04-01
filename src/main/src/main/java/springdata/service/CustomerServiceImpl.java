@@ -1,6 +1,6 @@
 package springdata.service;
 
-import entities.Customer;
+import springdata.entity.Customer;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,7 +8,7 @@ import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.stereotype.Service;
 import springdata.config.DataConfig;
-import springdata.exceptions.DeleteException;
+import springdata.exception.DeleteException;
 import springdata.repository.CustomerRepo;
 
 import java.math.BigDecimal;

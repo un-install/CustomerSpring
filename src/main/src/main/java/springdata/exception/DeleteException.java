@@ -1,4 +1,4 @@
-package springdata.exceptions;
+package springdata.exception;
 
 public class DeleteException extends RuntimeException {
     private static final long serialVersionUID = 2L;

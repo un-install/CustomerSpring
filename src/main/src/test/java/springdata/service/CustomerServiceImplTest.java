@@ -1,6 +1,6 @@
 package springdata.service;
 
-import entities.Customer;
+import springdata.entity.Customer;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;

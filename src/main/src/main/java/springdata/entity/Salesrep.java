@@ -1,4 +1,4 @@
-package entities;
+package springdata.entity;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -25,6 +25,10 @@ public class Salesrep implements Serializable, ModelInterface {
     private Set<Salesrep> managedEmployes = new HashSet<>();
 
     public Salesrep() {
+    }
+
+    public Salesrep(BigDecimal emplNum) {
+        this.emplNum = emplNum;
     }
 
     public Salesrep(BigDecimal emplNum, String name, BigDecimal age, Office repOffice, String title, Date hireDate, Salesrep manager, BigDecimal quota, BigDecimal sales, Set<Customer> customers, Set<Order> orders) {

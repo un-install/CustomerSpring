@@ -1,6 +1,6 @@
 package springdata.service;
 
-import entities.Customer;
+import springdata.entity.Customer;
 
 import java.math.BigDecimal;
 import java.util.Set;

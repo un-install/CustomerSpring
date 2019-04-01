@@ -1,7 +1,8 @@
 package springdata.repository;
 
-import entities.Customer;
-import org.junit.After;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.test.context.web.WebAppConfiguration;
+import springdata.entity.Customer;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -29,6 +30,7 @@ import static org.junit.Assert.*;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = DataConfig.class)
 @TestPropertySource("classpath:springdata/repository/test.properties")
+@WebAppConfiguration
 public class CustomerRepoIntegrationH2Test {
     private final Customer EXISTED_CUSTOMER = new Customer(new BigDecimal(111113),"Solomon", null, new BigDecimal(151515), null);
     private final Customer NOT_EXISTED_CUSTOMER = new Customer(new BigDecimal(21111),"Microsoft", null, new BigDecimal(50000), null);
